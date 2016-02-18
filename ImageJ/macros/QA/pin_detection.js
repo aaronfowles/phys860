@@ -28,6 +28,8 @@ for (i = 0; i < im_height; i++)
 }
 
 // Create ROIs based on known properties of the phantom
+vertical_pins = new Object();
+
 
 
 // For each ROI, calculate summary statistics of each row/column and select likely pin pixels
