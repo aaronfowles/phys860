@@ -41,8 +41,9 @@ for (y = 0; y <= im_height / 2; y++)
 		p = im.getPixel(midline,y+1)
 		if(p[0] > edge_cutoff)
 		{
-			p = im.getPixel(midline,y+2)
-			if(p[0] > edge_cutoff)
+			p = im.getPixel(midline,y+2);
+			q = im.getPixel(midline,y+5);
+			if(p[0] > edge_cutoff & q[0] > edge_cutoff)
 			{
 				zero_y_pixel_val = y+1;
 				zero_y_mm_val = (y+1) * pixel_dimension;
@@ -100,7 +101,7 @@ for (y = zero_y_pixel_val; y <= max_y_pixel_val; y++)
 }
 
 // Deduce depth at which average grey values are a set proportion of values near zero
-cutoff_grey_proportion = 0.7;
+cutoff_grey_proportion = 0.8;
 estimated_cutoff = 0;
 num_meeting_threshold = 0;
 for (i in mean_grey_at_depth)
@@ -108,12 +109,13 @@ for (i in mean_grey_at_depth)
 	if (mean_grey_at_depth[i] < mean_grey_at_depth[0]*cutoff_grey_proportion)
 	{
 		num_meeting_threshold = num_meeting_threshold + 1;
-		if (num_meeting_threshold == 50)
+		if (num_meeting_threshold == 30 & i > 50)
 		{
-			estimated_cutoff = i - 50;
+			estimated_cutoff = i - 30;
 			break;
 		}
 	}
+	print("Low contrast penetration depth = " + i + " pixels (" + i*pixel_dimension + " mm)" + " having mean grey of " + mean_grey_at_depth[i] + " compared to baseline of " + mean_grey_at_depth[0]);
 }
 
 // Output results
