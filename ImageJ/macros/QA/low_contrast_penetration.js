@@ -113,7 +113,7 @@ if (transducer_type.substr(1,7) == "LINEAR")
 	cutoff_grey_proportion = 0.7;
 } else 
 {
-	cutoff_grey_proportion = 0.8;
+	cutoff_grey_proportion = 0.84;
 }
 
 estimated_cutoff = 0;
@@ -133,7 +133,7 @@ for (i in mean_grey_at_depth)
 			}
 		} else
 		{
-		 	if (num_meeting_threshold == 30 & i > 20)
+		 	if (num_meeting_threshold == 10 & i > 20)
 			{
 				estimated_cutoff = i - 30;
 				break;
@@ -141,6 +141,7 @@ for (i in mean_grey_at_depth)
 		 }		
 	}
 }
+print(num_meeting_threshold);
 
 // Output results
 var y_for_line = Number(estimated_cutoff) + Number(zero_y_pixel_val);
