@@ -101,7 +101,14 @@ for (y = zero_y_pixel_val; y <= max_y_pixel_val; y++)
 }
 
 // Deduce depth at which average grey values are a set proportion of values near zero
-cutoff_grey_proportion = 0.8;
+cutoff_grey_proportion = 0;
+if (transducer_type == 'LINEAR')
+{
+	cutoff_grey_proportion = 0.85;
+} else 
+{
+	cutoff_grey_proportion = 0.8;
+}
 estimated_cutoff = 0;
 num_meeting_threshold = 0;
 for (i in mean_grey_at_depth)
@@ -111,7 +118,7 @@ for (i in mean_grey_at_depth)
 		num_meeting_threshold = num_meeting_threshold + 1;
 		if (num_meeting_threshold == 10 & i > 20)
 		{
-			estimated_cutoff = i;
+			estimated_cutoff = i - 10;
 			break;
 		}
 	}
