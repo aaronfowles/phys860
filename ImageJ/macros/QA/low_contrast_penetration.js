@@ -53,6 +53,12 @@ for (y = 0; y <= im_height / 2; y++)
 	}
 }
 
+if (transducer_type == 'LINEAR')
+{
+	zero_y_pixel_val = zero_y_pixel_val + 50;
+	zero_y_mm_val = zero_y_pixel_val*pixel_dimension;
+}
+
 // Set 'max' point to which ultrasound beam penetrates
 max_y_pixel_val = 0;
 max_y_mm_val = 0;
@@ -116,11 +122,21 @@ for (i in mean_grey_at_depth)
 	if (mean_grey_at_depth[i] < mean_grey_at_depth[0]*cutoff_grey_proportion)
 	{
 		num_meeting_threshold = num_meeting_threshold + 1;
-		if (num_meeting_threshold == 10 & i > 20)
+		if (transducer_type == 'LINEAR')
 		{
-			estimated_cutoff = i - 10;
-			break;
-		}
+			if (num_meeting_threshold == 5 & i > 20)
+			{
+				estimated_cutoff = i - 10;
+				break;
+			}
+		 else
+		 {
+		 	if (num_meeting_threshold == 10 & i > 20)
+			{
+				estimated_cutoff = i;
+				break;
+			}
+		 }		
 	}
 	print("Low contrast penetration depth = " + i + " pixels (" + i*pixel_dimension + " mm)" + " having mean grey of " + mean_grey_at_depth[i] + " compared to baseline of " + mean_grey_at_depth[0]);
 }
