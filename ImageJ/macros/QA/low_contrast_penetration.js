@@ -109,9 +109,9 @@ for (i in mean_grey_at_depth)
 	if (mean_grey_at_depth[i] < mean_grey_at_depth[0]*cutoff_grey_proportion)
 	{
 		num_meeting_threshold = num_meeting_threshold + 1;
-		if (num_meeting_threshold == 30 & i > 50)
+		if (num_meeting_threshold == 20 & i > 50)
 		{
-			estimated_cutoff = i - 30;
+			estimated_cutoff = i - 20;
 			break;
 		}
 	}
