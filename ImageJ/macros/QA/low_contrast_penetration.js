@@ -147,8 +147,8 @@ print(num_meeting_threshold);
 var y_for_line = Number(estimated_cutoff) + Number(zero_y_pixel_val);
 var line = Roi(0,y_for_line,im_width,1);
 
-im_annotate.draw(line);
-line.drawPixels(im_annotate);
+//im_annotate.draw(line);
+//line.drawPixels(im_annotate);
 im_annotate_image = ImagePlus("Annotated Image",im_annotate);
 
 im_annotate_image.show();
