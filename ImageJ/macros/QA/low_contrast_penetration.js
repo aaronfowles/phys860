@@ -113,7 +113,7 @@ if (transducer_type.substr(1,7) == "LINEAR")
 	cutoff_grey_proportion = 0.7;
 } else 
 {
-	cutoff_grey_proportion = 0.84;
+	cutoff_grey_proportion = 0.8;
 }
 
 estimated_cutoff = 0;
@@ -126,16 +126,16 @@ for (i in mean_grey_at_depth)
 		num_meeting_threshold = num_meeting_threshold + 1;
 		if (transducer_type.substr(1,7) == "LINEAR")
 		{
-			if (num_meeting_threshold == 5 & i > 20)
+			if (num_meeting_threshold == 5)
 			{
 				estimated_cutoff = i - 10;
 				break;
 			}
 		} else
 		{
-		 	if (num_meeting_threshold == 10 & i > 20)
+		 	if (num_meeting_threshold == 5)
 			{
-				estimated_cutoff = i - 30;
+				estimated_cutoff = i;
 				break;
 			}
 		 }		
