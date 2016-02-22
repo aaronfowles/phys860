@@ -3,5 +3,5 @@
 
 Low contrast penetration - 
 
-The code for the low contrast penetration algorithm is contained in the JavaScript file ImageJ/macros/QA/low_contrast_penetration.js 
+The code for the low contrast penetration algorithm is contained in the JavaScript file 'ImageJ/macros/QA/low_contrast_penetration.js'
 
