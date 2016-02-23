@@ -138,22 +138,22 @@ for (i in mean_grey_at_depth)
 				estimated_cutoff = i;
 				break;
 			}
-		 }		
+		}		
 	}
 }
-print(num_meeting_threshold);
 
 // Output results
 var y_for_line = Number(estimated_cutoff) + Number(zero_y_pixel_val);
 var line = Roi(0,y_for_line,im_width,1);
 
-//im_annotate.draw(line);
-//line.drawPixels(im_annotate);
+im_annotate.draw(line);
+line.drawPixels(im_annotate);
 im_annotate_image = ImagePlus("Annotated Image",im_annotate);
 
 im_annotate_image.show();
 
 popup = GenericDialog("Results");
-results = "Low contrast penetration depth = " + estimated_cutoff + " pixels (" + estimated_cutoff*pixel_dimension + " mm)" + " having mean grey of " + mean_grey_at_depth[estimated_cutoff] + " compared to baseline of " + mean_grey_at_depth[0];
+results = "Low contrast penetration depth = " + estimated_cutoff + " pixels (" + estimated_cutoff*pixel_dimension + " mm)"
+	 + " having mean grey of " + mean_grey_at_depth[estimated_cutoff] + " compared to baseline of " + mean_grey_at_depth[0];
 popup.addMessage(results);
 popup.showDialog();
