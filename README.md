@@ -3,6 +3,10 @@
 
 ## Low contrast penetration
 
+### Running the notebook
+
+Click on the 'launch binder' at the top of this file to launch the Jupyrt Notebook used for development.
+
 ### Locating the JavaScript file
 
 The code for the low contrast penetration algorithm is contained in the JavaScript file `ImageJ/macros/QA/low_contrast_penetration.js`
