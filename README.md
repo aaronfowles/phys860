@@ -5,7 +5,7 @@
 
 ### Running the notebook
 
-Click on the 'launch binder' at the top of this file to launch the Jupyrt Notebook used for development.
+Click on the 'launch binder' button at the top of this file to launch the Jupyrt Notebook used for development.
 
 ### Locating the JavaScript file
 
